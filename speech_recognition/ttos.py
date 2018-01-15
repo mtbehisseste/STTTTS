@@ -1,14 +1,10 @@
-# only avalible with python 2
 import pyttsx3
 
-engine = pyttsx3.init('neospeech')
-engine.setProperty('rate', 135)
+engine = pyttsx3.init('espeak')
+engine.setProperty('rate', 160)
 
 voices = engine.getProperty('voices')
-# for voice in voices:
-#     print (voice.id)
-# print (voices[67].id)
-engine.setProperty('voices', voices[67].id)
+engine.setProperty('voice', 'zh')
 
 while True:
     try:
