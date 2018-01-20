@@ -11,9 +11,15 @@ print ("client info: ", clientSocket, address)
 while True:    
     try:
         clientMsg = clientSocket.recv(1024)
-        print ("client says:", clientMsg.decode())
-        
-        clientSocket.send(clientMsg)
+        if clientMsg:
+            print ("client says:", clientMsg.decode(), end = '')
+            clientSocket.send(clientMsg)
+        else:
+            print ("connection terminate.")
+            clientSocket.send("connection terminate.".encode())
+            clientSocket.close()
+            s.close()
+            break
     except KeyboardInterrupt:
         clientSocket.close()    
         s.close()
